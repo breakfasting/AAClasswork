@@ -1,0 +1,31 @@
+html,body,
+
+header,aside,section,figure,footer,
+
+img,nav,ul,ol,li,a,figcaption,p,
+
+form,label,input,select,option,textarea,
+
+h1,h2,h3,h4,h5,h6 {
+
+  margin: 0;
+  padding: 0;
+  border: 0;
+
+  font: inherit;
+
+}
+
+body {
+  line-height: 1.5em;
+}
+
+img {
+
+  width: 100%;
+}
+
+ol,ul {
+
+  list-style: none;
+}
