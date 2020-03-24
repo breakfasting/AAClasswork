@@ -1,0 +1,37 @@
+<% if action == :index %>
+    <a href="<%= cat_url(this_cat)%>">Show One Cat</a>
+<% else %>
+    <a href="<%= cats_url%>">Show All Cats</a>
+    <a href="<%= edit_cat_url(this_cat)%>">Update This Cat</a>
+<% end %>
+
+<table>
+  <tr>
+    <th>attribute</th>
+    <th>value</th>
+  </tr>
+  <tr>
+    <td>Name</td>
+    <td><%= this_cat.name %></td>
+  </tr>
+  <tr>
+    <td>Birth Date</td>
+    <td><%= this_cat.birth_date %></td>
+  </tr>
+  <tr>
+    <td>Age</td>
+    <td><%= this_cat.age %></td>
+  </tr>
+  <tr>
+    <td>Color</td>
+    <td><%= this_cat.color %></td>
+  </tr>
+  <tr>
+    <td>Sex</td>
+    <td><%= this_cat.sex %></td>
+  </tr>
+  <tr>
+    <td>Description</td>
+    <td><%= this_cat.description %></td>
+  </tr>
+</table>
