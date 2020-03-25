@@ -1,0 +1,375 @@
+  [1m[35m (278.1ms)[0m  [1m[35mCREATE DATABASE "music_app_user_development" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (148.7ms)[0m  [1m[35mCREATE DATABASE "music_app_user_test" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (23.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ bin/rails:9
+  [1m[35m (23.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_try_advisory_lock(3596459170535027475)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateUsers (20200325231932)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (27.4ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "username" character varying NOT NULL, "password_digest" character varying NOT NULL, "session_token" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20200325231932_create_users.rb:3
+  [1m[35m (4.2ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_username" ON "users"  ("username")[0m
+  ↳ db/migrate/20200325231932_create_users.rb:10
+  [1m[35m (4.4ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_session_token" ON "users"  ("session_token")[0m
+  ↳ db/migrate/20200325231932_create_users.rb:11
+  [1m[36mActiveRecord::SchemaMigration Create (1.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200325231932"]]
+  ↳ bin/rails:9
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Create (1.9ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-03-25 23:21:29.610297"], ["updated_at", "2020-03-25 23:21:29.610297"]]
+  ↳ bin/rails:9
+  [1m[35m (4.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(3596459170535027475)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Started GET "/users/new" for ::1 at 2020-03-25 16:36:16 -0700
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/breakfasting/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.2/lib/active_record/log_subscriber.rb:98
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 1176ms (Views: 1157.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for ::1 at 2020-03-25 16:36:22 -0700
+Processing by UsersController#create as HTML
+  Parameters: {"user"=>{"username"=>"wayne", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Entity in 1ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::InvalidAuthenticityToken - ActionController::InvalidAuthenticityToken:
+
+Started POST "/__better_errors/d2a28b3d387442df/variables" for ::1 at 2020-03-25 16:36:22 -0700
+Started POST "/users" for ::1 at 2020-03-25 16:38:33 -0700
+Processing by UsersController#create as HTML
+  Parameters: {"user"=>{"username"=>"wayne", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Entity in 4ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::InvalidAuthenticityToken - ActionController::InvalidAuthenticityToken:
+
+Started POST "/__better_errors/9406e4c0b53b200a/variables" for ::1 at 2020-03-25 16:38:33 -0700
+Started GET "/sessions/new" for ::1 at 2020-03-25 16:38:53 -0700
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/breakfasting/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.2/lib/active_record/log_subscriber.rb:98
+
+NameError - uninitialized constant SessionsController:
+
+Started POST "/__better_errors/5dd26fefe4921a07/variables" for ::1 at 2020-03-25 16:38:54 -0700
+Started GET "/users/new" for ::1 at 2020-03-25 16:38:57 -0700
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 343ms (Views: 295.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for ::1 at 2020-03-25 16:39:03 -0700
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"bDRgEqyj7AXDqEdM9M6X6d35a+R6r3l7OCNqoHtlMtElTqHn14PPU/yNdeEzyxvdPHwpxKKAqYqn4bekIeie3Q==", "user"=>{"username"=>"wayne", "password"=>"[FILTERED]"}}
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:16
+  [1m[36mUser Exists (24.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "wayne"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16
+  [1m[36mUser Exists (6.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "DIFR52R06dg-6R1PuL9qPQ"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16
+  [1m[36mUser Create (3.7ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "wayne"], ["password_digest", "$2a$12$lGYTWrGwZDxEAbUWyVeL/O3tz8Mp3IHVHgYTyVUAWMzAP11gk9lXm"], ["session_token", "DIFR52R06dg-6R1PuL9qPQ"], ["created_at", "2020-03-25 23:39:04.100910"], ["updated_at", "2020-03-25 23:39:04.100910"]]
+  ↳ app/controllers/users_controller.rb:16
+  [1m[35m (42.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:16
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 714ms (ActiveRecord: 144.2ms)
+
+
+Started GET "/users/1" for ::1 at 2020-03-25 16:39:04 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:4
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 151ms (Views: 126.1ms | ActiveRecord: 5.7ms)
+
+
+Started GET "/sessions/new" for ::1 at 2020-03-25 16:48:52 -0700
+
+NoMethodError - undefined method `helper_methods' for ApplicationController:Class
+Did you mean?  helper_method
+               _helper_methods
+               _helper_methods=
+               _helper_methods?:
+  app/controllers/application_controller.rb:2:in `<class:ApplicationController>'
+  app/controllers/application_controller.rb:1:in `<top (required)>'
+  app/controllers/sessions_controller.rb:1:in `<top (required)>'
+
+Started POST "/__better_errors/f66edd850ee9eabe/variables" for ::1 at 2020-03-25 16:48:52 -0700
+Started GET "/sessions/new" for ::1 at 2020-03-25 16:49:07 -0700
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 330ms (Views: 325.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for ::1 at 2020-03-25 16:49:12 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"U6KI7XTB6ObT0ehQUb36doJPp7GJfqZhi6OkvMWHJD4a2EkYD+HLsOz02v2WuHZCY8rlkVFRdpAUYXm4nwqIMg==", "user"=>{"username"=>"wayne", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "wayne"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:13
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:30
+  [1m[36mUser Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["username", "wayne"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:30
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "QIx7nIj0i_AhOojr94VNCA"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:30
+  [1m[36mUser Update (0.8ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "QIx7nIj0i_AhOojr94VNCA"], ["updated_at", "2020-03-25 23:49:12.680718"], ["id", 1]]
+  ↳ app/models/user.rb:30
+  [1m[35m (3.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:30
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 521ms (ActiveRecord: 125.3ms)
+
+
+Started GET "/users/1" for ::1 at 2020-03-25 16:49:12 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:4
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 130ms (Views: 117.4ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/users/1" for ::1 at 2020-03-25 16:53:16 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (9.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:4
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (1.8ms)
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "QIx7nIj0i_AhOojr94VNCA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 200 OK in 136ms (Views: 119.9ms | ActiveRecord: 10.3ms)
+
+
+Started DELETE "/sessions" for ::1 at 2020-03-25 16:53:17 -0700
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"1I5r7889XhadoOYShyCwOd8nL1XZ1ulvjG76mKX/PBGd9KoatB19QKKF1L9AJTwNPqJtdQH5OZ4TrCec/3KQHQ=="}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "QIx7nIj0i_AhOojr94VNCA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+  [1m[35m (2.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:30
+  [1m[36mUser Exists (4.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["username", "wayne"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:30
+  [1m[36mUser Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "LIqOaQIeRItcO8Hs8MpQog"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:30
+  [1m[36mUser Update (0.7ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "LIqOaQIeRItcO8Hs8MpQog"], ["updated_at", "2020-03-25 23:53:17.704096"], ["id", 1]]
+  ↳ app/models/user.rb:30
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:30
+Redirected to http://localhost:3000/sessions/new
+Completed 302 Found in 25ms (ActiveRecord: 11.8ms)
+
+
+Started GET "/sessions/new" for ::1 at 2020-03-25 16:53:17 -0700
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (0.7ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 200 OK in 44ms (Views: 42.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/new" for ::1 at 2020-03-25 16:53:19 -0700
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (1.3ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 200 OK in 72ms (Views: 69.6ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/users" for ::1 at 2020-03-25 16:53:26 -0700
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"v55vWsz/qbhRH2LG7Q7Vx3+uFXJlHa3yX8vmSWCcakD25K6vt9+K7m46UGsqC1nznitXUr0yfQPACTtNOhHGTA==", "user"=>{"username"=>"rachie", "password"=>"[FILTERED]"}}
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:16
+  [1m[36mUser Exists (1.0ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "rachie"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "Ek_485I-QfIt4muH_CNVVA"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "rachie"], ["password_digest", "$2a$12$3FBXccAD8lZX08h3k1OSIeNyuCeJb2EDfhSgupwRKbdA8LLuEcU9G"], ["session_token", "Ek_485I-QfIt4muH_CNVVA"], ["created_at", "2020-03-25 23:53:26.900822"], ["updated_at", "2020-03-25 23:53:26.900822"]]
+  ↳ app/controllers/users_controller.rb:16
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:16
+Redirected to http://localhost:3000/users/2
+Completed 302 Found in 351ms (ActiveRecord: 4.4ms)
+
+
+Started GET "/users/2" for ::1 at 2020-03-25 16:53:26 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:4
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.5ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 200 OK in 50ms (Views: 46.6ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/users/new" for ::1 at 2020-03-25 16:54:03 -0700
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (0.7ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 200 OK in 54ms (Views: 47.6ms | ActiveRecord: 6.0ms)
+
+
+Started POST "/users" for ::1 at 2020-03-25 16:54:08 -0700
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"BIr4/dGrOxM4CYiGupEz3KTzQZiHn+lYzTXYf+Dcs/BN8DkIqosYRQcsuit9lL/oRXYDuF+wOalS9wV7ulEf/A==", "user"=>{"username"=>"w", "password"=>"[FILTERED]"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:16
+  [1m[36mUser Exists (1.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "w"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16
+  [1m[36mUser Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "UeQcm2MW2OzVWS9JflBunw"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16
+  [1m[36mUser Create (2.7ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "w"], ["password_digest", "$2a$12$O/ipfOkAxTgprN/0fH0VOeYoa0YyY2LXM.ZuM4L.Of3Iql.7xXe/W"], ["session_token", "UeQcm2MW2OzVWS9JflBunw"], ["created_at", "2020-03-25 23:54:08.458042"], ["updated_at", "2020-03-25 23:54:08.458042"]]
+  ↳ app/controllers/users_controller.rb:16
+  [1m[35m (4.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:16
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:30
+  [1m[36mUser Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["username", "w"], ["id", 3], ["LIMIT", 1]]
+  ↳ app/models/user.rb:30
+  [1m[36mUser Exists (1.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "m-JN68sq57jNxASnpQt4YA"], ["id", 3], ["LIMIT", 1]]
+  ↳ app/models/user.rb:30
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "m-JN68sq57jNxASnpQt4YA"], ["updated_at", "2020-03-25 23:54:08.479329"], ["id", 3]]
+  ↳ app/models/user.rb:30
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:30
+Redirected to http://localhost:3000/users/3
+Completed 302 Found in 374ms (ActiveRecord: 23.5ms)
+
+
+Started GET "/users/3" for ::1 at 2020-03-25 16:54:08 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (3.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:4
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.5ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "m-JN68sq57jNxASnpQt4YA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 200 OK in 54ms (Views: 45.4ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/users/1" for ::1 at 2020-03-25 16:54:11 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (9.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:4
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.9ms)
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "m-JN68sq57jNxASnpQt4YA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 200 OK in 116ms (Views: 103.1ms | ActiveRecord: 10.5ms)
+
+
+Started GET "/users/2" for ::1 at 2020-03-25 16:54:14 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (3.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:4
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (1.0ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "m-JN68sq57jNxASnpQt4YA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 200 OK in 72ms (Views: 65.6ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/users/new" for ::1 at 2020-03-25 16:54:16 -0700
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (2.8ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "m-JN68sq57jNxASnpQt4YA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 200 OK in 118ms (Views: 116.5ms | ActiveRecord: 0.4ms)
+
+
+Started DELETE "/sessions" for ::1 at 2020-03-25 16:54:19 -0700
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"8SUFvswZa0by5stNgaQhYaVLqKvbqHeyYkCtQye63tu4X8RLtzlIEM3D+eBGoa1VRM7qiwOHp0P9gnBHfTdy1w=="}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "m-JN68sq57jNxASnpQt4YA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:30
+  [1m[36mUser Exists (3.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["username", "w"], ["id", 3], ["LIMIT", 1]]
+  ↳ app/models/user.rb:30
+  [1m[36mUser Exists (13.9ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "3-y-eHUWWts9j8IlbzOTMg"], ["id", 3], ["LIMIT", 1]]
+  ↳ app/models/user.rb:30
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "3-y-eHUWWts9j8IlbzOTMg"], ["updated_at", "2020-03-25 23:54:19.209950"], ["id", 3]]
+  ↳ app/models/user.rb:30
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:30
+Redirected to http://localhost:3000/sessions/new
+Completed 302 Found in 32ms (ActiveRecord: 19.6ms)
+
+
+Started GET "/sessions/new" for ::1 at 2020-03-25 16:54:19 -0700
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (1.1ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 200 OK in 48ms (Views: 46.7ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/sessions" for ::1 at 2020-03-25 16:54:24 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"7nOeQIDLLVbIZTo/f5UlVcgkOIPuMGQgjS1x4LpbQfqnCV+1++sOAPdACJK4kKlhKaF6ozYftNES76zk4Nbt9g==", "user"=>{"username"=>"rachie", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "rachie"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:13
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:30
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["username", "rachie"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:30
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "aBg85FxFvPtFHggh0FeHVw"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:30
+  [1m[36mUser Update (1.7ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "aBg85FxFvPtFHggh0FeHVw"], ["updated_at", "2020-03-25 23:54:25.175498"], ["id", 2]]
+  ↳ app/models/user.rb:30
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:30
+Redirected to http://localhost:3000/users/2
+Completed 302 Found in 348ms (ActiveRecord: 4.2ms)
+
+
+Started GET "/users/2" for ::1 at 2020-03-25 16:54:25 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:4
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.5ms)
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "aBg85FxFvPtFHggh0FeHVw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 200 OK in 56ms (Views: 52.7ms | ActiveRecord: 1.2ms)
+
+
