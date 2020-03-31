@@ -1,0 +1,22 @@
+<h1><%= @post.title %></h1>
+
+<table>
+  <tr>
+    <td>URL</td>
+    <td><%= @post.url %></td>
+  </tr>
+  <tr>
+    <td>Content</td>
+    <td><%= @post.content %></td>
+  </tr>
+  <tr>
+    <td>Author</td>
+    <td><%= @post.author.username %></td>
+  </tr>
+  <tr>
+    <td>Sub</td>
+    <td><%= @post.sub.title %></td>
+  </tr>
+</table>
+
+<a href="<%= sub_url(@post.sub) %>">Back to sub</a>
