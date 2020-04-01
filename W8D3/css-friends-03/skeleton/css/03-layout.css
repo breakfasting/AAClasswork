@@ -1,1 +1,21 @@
 /* PHASE 3: Layout */
+.content {
+  display: flex;
+  width: 900px;
+  margin: 0 auto;
+}
+
+.content-sidebar {
+  width: 25%;
+  min-height: 200px;
+  background-color: aquamarine;
+  border: 1px solid lightgray;
+  border-right: none;
+}
+
+.content-main {
+  width: 75%;
+  min-height: 200px;
+  background-color: aqua;
+  border: 1px solid lightgray;
+}
