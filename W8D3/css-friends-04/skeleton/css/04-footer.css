@@ -1,1 +1,29 @@
 /* PHASE 4: Footer */
+footer {
+  width: 900px;
+  margin: 0 auto;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-top: none;
+  color: #AAA;
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+}
+
+.footer-nav ul {
+  display: flex;
+  padding: 20px
+}
+
+.footer-nav li ~ li{
+  margin-left: 20px;
+}
+
+.footer-nav li:hover {
+  color: black;
+}
+
+.copyright {
+  padding: 20px;
+}
