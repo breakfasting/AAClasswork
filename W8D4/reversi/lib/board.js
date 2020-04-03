@@ -97,12 +97,18 @@ Board.prototype.isValidPos = function (pos) {
  * Returns null if no pieces of the opposite color are found.
  */
 function _positionsToFlip (board, pos, color, dir, piecesToFlip) {
-  if (!board.isValidPos(pos)) return null;
-  if (!board.isOccupied(pos)) return null;
-  if (board.isMine(pos, color)) return piecesToFlip;
-
   let next_pos = [pos[0] + dir[0], pos[1] + dir[1]];
-  piecesToFlip.push(pos);
+  if (!board.isValidPos(next_pos)) return null;
+  if (!board.isOccupied(next_pos)) return null;
+  if (board.isMine(next_pos, color)) {
+    if (piecesToFlip.length === 0) {
+      return null;
+    } else {
+      return piecesToFlip;
+    }
+  }
+  
+  piecesToFlip.push(next_pos);
   return _positionsToFlip(board, next_pos, color, dir, piecesToFlip);
 }
 
@@ -113,6 +119,26 @@ function _positionsToFlip (board, pos, color, dir, piecesToFlip) {
  * Throws an error if the position represents an invalid move.
  */
 Board.prototype.placePiece = function (pos, color) {
+  if (!this.validMove(pos, color)) {
+    throw new Error('Invalid Move');
+  }
+
+  if (this.isOccupied(pos)) return false;
+  let arr = [];
+  for (let i = 0; i < Board.DIRS.length; i++) {
+    
+    let temp = _positionsToFlip(this, pos, color, Board.DIRS[i], []);
+    if (temp !== null) {
+      arr.concat(temp);
+    }
+  }
+  debugger;
+
+  for (let i = 0; i < arr.length ; i++) {
+    this.getPiece(arr[i]).flip();
+  }
+
+  this.grid[pos[0]][pos[1]] = new Piece(color);
 };
 
 /**
@@ -129,13 +155,21 @@ Board.prototype.print = function () {
 Board.prototype.validMove = function (pos, color) {
   if(this.isOccupied(pos)) return false;
   let arr = [];
-  debugger
-  Board.DIRS.forEach( dir => {
-    let temp = _positionsToFlip(this, pos, color, dir, []);
-    if(temp !== null) {
-      return true; 
+  for (let i = 0; i < Board.DIRS.length; i++) {
+    // debugger;
+
+    let temp = _positionsToFlip(this, pos, color, Board.DIRS[i], []);
+    if (temp !== null) {
+      return true;
     }
-  });
+  }
+
+  // Board.DIRS.forEach( dir => {
+  //   let temp = _positionsToFlip(this, pos, color, dir, []);
+  //   if(temp !== null) {
+  //     return true; 
+  //   }
+  // });
   return false; 
 };
 
@@ -144,6 +178,15 @@ Board.prototype.validMove = function (pos, color) {
  * the Board for a given color.
  */
 Board.prototype.validMoves = function (color) {
+  let valid = [];
+  for(let i = 0; i < 8; i++){
+    for(let j = 0; j < 8; j++){
+      if (this.validMove([i,j], color)){
+        valid.push([i,j]);
+      }
+    }
+  }
+  return valid; 
 };
 
 module.exports = Board;
