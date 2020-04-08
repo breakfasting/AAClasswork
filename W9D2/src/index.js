@@ -5,7 +5,8 @@ window.addEventListener("DOMContentLoaded", function() {
     let ctx = canvas.getContext("2d");
     const gameView = new GameView(ctx);
     gameView.start();
+    
+    // window.GameView = GameView;
 });
 
 console.log("Webpack is working!");
-

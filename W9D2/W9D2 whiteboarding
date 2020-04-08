@@ -1,0 +1,37 @@
+//n steps to top
+//1 or 2 steps, distinct ways to top
+
+//n is pos int
+
+/*
+1       1   ->1
+2       11,2    ->2
+3       111,21,12   ->3
+4       1111,211,121,22,112     ->5
+5       11111,2111,1211,221,1121,1112,212,122   ->8
+*/
+
+const climbStairs = function(n){
+    if (n == 1){
+        return 1;
+    }
+    else if (n == 2){
+        return 2;
+    }
+    return climbStairs(n-1) + climbStairs(n-2)
+}
+
+const climbStairsIterate = function(n){
+    if (n === 1){
+        return 1;
+    }
+    let nums = [1,2];
+    let i = 2;
+    while (i < n){
+        let nextNum = nums[0] + nums[1];
+        nums[0] = num[1];
+        nums[1] = nextNum;
+        i++;
+    }
+    return nums[1];
+}

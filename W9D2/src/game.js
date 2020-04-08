@@ -1,4 +1,5 @@
 const Asteroid = require('./asteroid.js');
+const Ship = require('./ship.js');
 
 Game.DIM_X = 640;
 Game.DIM_Y = 480;
@@ -7,6 +8,10 @@ Game.NUM_ASTEROIDS = 100;
 function Game() {
     this.asteroids = [];
     this.addAsteroids();
+    this.ship = new Ship({ 
+        pos: this.randomPosition(), 
+        game: this
+    });
 }
 
 Game.prototype.addAsteroids = function () {
@@ -25,14 +30,14 @@ Game.prototype.randomPosition = function () {
 
 Game.prototype.draw = function (ctx) {
     ctx.clearRect(0, 0, Game.DIM_X, Game.DIM_Y);
-    for (let ast of this.asteroids) {
-        ast.draw(ctx);
+    for (let item of this.allObjects()) {
+        item.draw(ctx);
     }
 };
 
 Game.prototype.moveObjects = function () {
-    for (let ast of this.asteroids) {
-        ast.move();
+    for (let item of this.allObjects()) {
+        item.move();
     }
 };
 
@@ -52,16 +57,14 @@ Game.prototype.wrap = function (pos) {
 };
 
 Game.prototype.checkCollisions = function() {
-    for (let i = 0; i < this.asteroids.length; i++) {
-        for (let j = 0; j < this.asteroids.length; j++) {
+    for (let i = 0; i < this.allObjects().length; i++) {
+        for (let j = 0; j < this.allObjects().length; j++) {
             if (i === j) continue;
-            if (this.asteroids[i].isCollidedWith(this.asteroids[j])) {
+            if (this.allObjects()[i].isCollidedWith(this.allObjects()[j])) {
                 // alert("COLLISION!!");
-                this.asteroids[i].color = "red";
-                this.asteroids[j].color = "green";
-            } else {
-                // this.asteroids[i].color = "#666";
-                // this.asteroids[j].color = "#666";
+                // this.asteroids[i].color = "red";
+                // this.asteroids[j].color = "green";
+                this.allObjects()[i].collideWith(this.allObjects()[j]);
             }
         }
     }
@@ -73,7 +76,15 @@ Game.prototype.step = function() {
 };
 
 Game.prototype.remove = function(asteroid) {
+    // console.log(this.asteroids);
+    this.asteroids = this.asteroids.filter((ast) => {
+        return (asteroid.x !== ast.x) && (asteroid.y !== ast.y);
+    });
+    // console.log(this.asteroids);
+}
 
+Game.prototype.allObjects = function(){
+    return this.asteroids.concat([this.ship]);
 }
 
 module.exports = Game;
