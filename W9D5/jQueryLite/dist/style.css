@@ -1,0 +1,11 @@
+body {
+    background-color: rgb(180, 211, 223);
+}
+
+.redtext {
+    color:red;
+}
+
+.bold {
+  font-weight: 700;
+}
