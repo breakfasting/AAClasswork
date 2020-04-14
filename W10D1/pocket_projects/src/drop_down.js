@@ -32,4 +32,23 @@ function attachDogLinks(){
 }
 attachDogLinks();
 
-document.querySelector(".dog-link").css('diplay':'none')
+let dogList = document.querySelectorAll(".dog-link");
+Array.from(dogList).forEach(dogLi => {
+  dogLi.style.display = 'none';
+});
+
+function handleEnter() {
+  Array.from(dogList).forEach(dogLi => {
+    dogLi.style.display = 'block';
+  });
+}
+
+function handleLeave() {
+  Array.from(dogList).forEach(dogLi => {
+    dogLi.style.display = 'none';
+  });
+}
+
+let listener = document.querySelector('.drop-down-dog-nav');
+listener.addEventListener('mouseenter', handleEnter);
+listener.addEventListener('mouseleave', handleLeave);

@@ -1,15 +1,40 @@
 
 html {
   box-sizing: border-box;
-  background: #A9DBB8;
+  /*background: #E5D4C0;*/
   text-align: center;
 }
 
+body {
+  font-family: 'Girassol', cursive;
+  background-image: url('../images/egyptian-papyrus-light-8-x-12.jpg');
+}
+
 h1 {
-  color: #F0F2EF;
-  font-family: 'helvetica neue';
-  font-size: 20px;
+  color: #240115;
+  font-family: 'Girassol', cursive;
+  font-size: 40px;
   font-weight: 200;
+}
+
+a {
+  color: #240115;
+}
+
+.dog-link {
+  padding: 4px;  
+}
+
+.dog-link:hover{
+  background-color: #240115;
+}
+
+.dog-link:hover a{
+  color: white;
+}
+
+a:visited {
+  font-family: 'Vampiro One', cursive;
 }
 
 .header {
