@@ -1,24 +1,27 @@
-import React from "react"
-import ReactDom from "react-dom"
-import Clock from './clock'
-import Tabs from './tabs'
+import React from 'react';
+import ReactDom from 'react-dom';
+import Clock from './clock';
+import Tabs from './tabs';
+import Weather from './weather';
 
-let tabs = [{
-    title: 'Numero Uno',
-    content: 'Que es esto'
+const tabs = [{
+  title: 'Numero Uno',
+  content: 'Que es esto',
 }, {
-    title: 'Numero Dos',
-    content: 'Yo no se'
+  title: 'Numero Dos',
+  content: 'Yo no se',
 }];
 
 
-// add event listener to document and grab main div render react dom render 
-document.addEventListener("DOMContentLoaded", () => {
-    let root = document.getElementById("main");
-    ReactDom.render(
-        <div>
-            <Clock />
-            <Tabs tabArray={tabs} message={"Hi"}/>
-        </div>
-    , root);
-})
+// add event listener to document and grab main div render react dom render
+document.addEventListener('DOMContentLoaded', () => {
+  const root = document.getElementById('main');
+  ReactDom.render(
+    <div>
+      <Clock />
+      <Tabs tabArray={tabs} message="Hi" />
+      <Weather />
+    </div>,
+    root,
+  );
+});
