@@ -16,7 +16,7 @@ class TodoList extends React.Component {
           <ul>
               {this.props.todos.map(todo => <TodoListItem key={todo.id} todo={todo} />)}
           </ul>
-          <TodoForm receiveTodo={this.props.receiveTodo}/>
+          <TodoForm receiveTodo={this.props.receiveTodo} createTodo={this.props.createTodo}/>
       </div>
     )
   }

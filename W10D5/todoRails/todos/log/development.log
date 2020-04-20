@@ -352,3 +352,68 @@ Processing by Api::TodosController#index as */*
 Completed 200 OK in 45ms (Views: 2.0ms | ActiveRecord: 42.7ms)
 
 
+Started GET "/" for ::1 at 2020-04-19 22:32:57 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 489ms (Views: 488.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/todos" for ::1 at 2020-04-19 22:32:58 -0700
+Processing by Api::TodosController#index as */*
+  [1m[36mTodo Load (2.9ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/todos_controller.rb:5
+Completed 200 OK in 7ms (Views: 3.3ms | ActiveRecord: 2.9ms)
+
+
+Started POST "/api/todos" for ::1 at 2020-04-19 22:33:02 -0700
+Processing by Api::TodosController#create as */*
+  Parameters: {"title"=>"qwe", "body"=>"qwe", "id"=>"1587360782057", "done"=>"false"}
+Completed 400 Bad Request in 2ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::ParameterMissing - param is missing or the value is empty: todo:
+  app/controllers/api/todos_controller.rb:40:in `todo_params'
+  app/controllers/api/todos_controller.rb:14:in `create'
+
+Started GET "/" for ::1 at 2020-04-19 22:37:23 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 601ms (Views: 600.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/todos" for ::1 at 2020-04-19 22:37:24 -0700
+Processing by Api::TodosController#index as */*
+  [1m[36mTodo Load (3.5ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/todos_controller.rb:5
+Completed 200 OK in 6ms (Views: 2.6ms | ActiveRecord: 3.5ms)
+
+
+Started POST "/api/todos" for ::1 at 2020-04-19 22:37:27 -0700
+Processing by Api::TodosController#create as */*
+  Parameters: {"todo"=>{"title"=>"123", "body"=>"123", "id"=>"1587361047621", "done"=>"false"}}
+Unpermitted parameter: :id
+  [1m[35m (1.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/todos_controller.rb:15
+  [1m[36mTodo Create (13.9ms)[0m  [1m[32mINSERT INTO "todos" ("title", "body", "done", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "123"], ["body", "123"], ["done", false], ["created_at", "2020-04-20 05:37:27.637011"], ["updated_at", "2020-04-20 05:37:27.637011"]]
+  ↳ app/controllers/api/todos_controller.rb:15
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/todos_controller.rb:15
+Completed 200 OK in 21ms (Views: 0.4ms | ActiveRecord: 15.8ms)
+
+
+Started POST "/api/todos" for ::1 at 2020-04-19 22:37:30 -0700
+Processing by Api::TodosController#create as */*
+  Parameters: {"todo"=>{"title"=>"sdfafd", "body"=>"sdfsdf", "id"=>"1587361050212", "done"=>"false"}}
+Unpermitted parameter: :id
+  [1m[35m (1.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/todos_controller.rb:15
+  [1m[36mTodo Create (0.5ms)[0m  [1m[32mINSERT INTO "todos" ("title", "body", "done", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "sdfafd"], ["body", "sdfsdf"], ["done", false], ["created_at", "2020-04-20 05:37:30.233262"], ["updated_at", "2020-04-20 05:37:30.233262"]]
+  ↳ app/controllers/api/todos_controller.rb:15
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/todos_controller.rb:15
+Completed 200 OK in 7ms (Views: 0.5ms | ActiveRecord: 2.0ms)
+
+
