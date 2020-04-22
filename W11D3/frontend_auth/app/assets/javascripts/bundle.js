@@ -571,7 +571,21 @@ exports.default = function (_ref) {
   var currentUser = _ref.currentUser,
       logout = _ref.logout;
 
-  var display = _react2.default.createElement(
+  var display = currentUser ? _react2.default.createElement(
+    'div',
+    null,
+    _react2.default.createElement(
+      'p',
+      null,
+      'Hello,',
+      currentUser.username
+    ),
+    _react2.default.createElement(
+      'button',
+      { type: 'button', onClick: logout },
+      'Log Out'
+    )
+  ) : _react2.default.createElement(
     'div',
     null,
     _react2.default.createElement(
@@ -617,10 +631,6 @@ exports.default = function (_ref) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-
-var _react = __webpack_require__(/*! react */ "./node_modules/react/react.js");
-
-var _react2 = _interopRequireDefault(_react);
 
 var _reactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 
