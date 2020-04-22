@@ -1,0 +1,21 @@
+.index img {
+    width: 20px;
+    height: 20px;
+}
+
+.details-container {
+    display: flex;
+    justify-content: center;
+    /* margin: 0 auto; */
+    align-items: flex-start;
+}
+
+.details {
+    border: 1px solid black;
+    padding: 20px;
+}
+
+.main {
+    display: flex;
+    align-items: flex-start;
+}
