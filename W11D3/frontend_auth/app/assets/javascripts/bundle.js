@@ -296,6 +296,10 @@ var _signup_container = __webpack_require__(/*! ./session/signup_container */ ".
 
 var _signup_container2 = _interopRequireDefault(_signup_container);
 
+var _signin_container = __webpack_require__(/*! ./session/signin_container */ "./frontend/components/session/signin_container.js");
+
+var _signin_container2 = _interopRequireDefault(_signin_container);
+
 var _route_utils = __webpack_require__(/*! ../utils/route_utils */ "./frontend/utils/route_utils.jsx");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -307,7 +311,8 @@ exports.default = function () {
     _react2.default.createElement(_reactRouterDom.Route, { path: '/', component: _nav_bar_container2.default }),
     _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _home2.default }),
     _react2.default.createElement(_route_utils.ProtectedRoute, { path: '/chirps', component: _chirp_index_container2.default }),
-    _react2.default.createElement(_route_utils.AuthRoute, { path: '/signup', component: _signup_container2.default })
+    _react2.default.createElement(_route_utils.AuthRoute, { path: '/signup', component: _signup_container2.default }),
+    _react2.default.createElement(_route_utils.AuthRoute, { path: '/login', component: _signin_container2.default })
   );
 };
 
@@ -789,6 +794,156 @@ exports.default = function (_ref) {
 
 /***/ }),
 
+/***/ "./frontend/components/session/signin.jsx":
+/*!************************************************!*\
+  !*** ./frontend/components/session/signin.jsx ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/react.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Signin = function (_React$Component) {
+  _inherits(Signin, _React$Component);
+
+  function Signin(props) {
+    _classCallCheck(this, Signin);
+
+    var _this = _possibleConstructorReturn(this, (Signin.__proto__ || Object.getPrototypeOf(Signin)).call(this, props));
+
+    _this.state = {
+      username: '',
+      password: ''
+    };
+    _this.handleSubmit = _this.handleSubmit.bind(_this);
+    return _this;
+  }
+
+  _createClass(Signin, [{
+    key: 'handleInput',
+    value: function handleInput(type) {
+      var _this2 = this;
+
+      return function (e) {
+        _this2.setState(_defineProperty({}, type, e.target.value));
+      };
+    }
+  }, {
+    key: 'handleSubmit',
+    value: function handleSubmit(e) {
+      var _props = this.props,
+          login = _props.login,
+          history = _props.history;
+
+      e.preventDefault();
+      login(this.state).then(function () {
+        return history.push('./chirps');
+      });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _state = this.state,
+          username = _state.username,
+          password = _state.password;
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'session-form' },
+        _react2.default.createElement(
+          'h2',
+          null,
+          'Sign In!'
+        ),
+        _react2.default.createElement(
+          'form',
+          null,
+          _react2.default.createElement(
+            'label',
+            { htmlFor: 'username' },
+            'Username:',
+            _react2.default.createElement('input', { type: 'text', value: username, id: 'username', onChange: this.handleInput('username') })
+          ),
+          _react2.default.createElement(
+            'label',
+            { htmlFor: 'password' },
+            'Password:',
+            _react2.default.createElement('input', { type: 'password', value: password, id: 'password', onChange: this.handleInput('password') })
+          ),
+          _react2.default.createElement(
+            'button',
+            { type: 'submit', onClick: this.handleSubmit },
+            'Sign In'
+          )
+        )
+      );
+    }
+  }]);
+
+  return Signin;
+}(_react2.default.Component);
+
+exports.default = Signin;
+
+/***/ }),
+
+/***/ "./frontend/components/session/signin_container.js":
+/*!*********************************************************!*\
+  !*** ./frontend/components/session/signin_container.js ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _reactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+
+var _session = __webpack_require__(/*! ../../actions/session */ "./frontend/actions/session.js");
+
+var _signin = __webpack_require__(/*! ./signin */ "./frontend/components/session/signin.jsx");
+
+var _signin2 = _interopRequireDefault(_signin);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    login: function login(formUser) {
+      return dispatch((0, _session.login)(formUser));
+    }
+  };
+};
+
+exports.default = (0, _reactRedux.connect)(null, mapDispatchToProps)(_signin2.default);
+
+/***/ }),
+
 /***/ "./frontend/components/session/signup.jsx":
 /*!************************************************!*\
   !*** ./frontend/components/session/signup.jsx ***!
@@ -855,6 +1010,8 @@ var Signup = function (_React$Component) {
       e.preventDefault();
       createNewUser(this.state).then(function () {
         return history.push('./chirps');
+      }).fail(function (res) {
+        return console.log(res);
       });
     }
   }, {
