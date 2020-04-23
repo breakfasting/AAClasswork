@@ -33,7 +33,7 @@ class SessionForm extends React.Component {
       <form onSubmit={this.handleSubmit}>
         <h1>{formType}</h1>
         <ul className="errors">
-          {errors.map((error) => <li>{error}</li>)}
+          {errors.map((error, i) => <li key={i}>{error}</li>)}
         </ul>
         <label htmlFor="username">
           <input type="text" id="username" onChange={this.handleChange('username')} value={username} />

@@ -20,10 +20,16 @@ export const receiveErrors = (errors) => ({
 });
 
 export const signup = (user) => (dispatch) => ApiUtil.signup(user)
-  .then((responseUser) => dispatch(receiveCurrentUser(responseUser)));
+  .then((responseUser) => dispatch(receiveCurrentUser(responseUser)))
+  .fail((res) => {
+    // debugger;
+    dispatch(receiveErrors(res.responseJSON));
+  });
 
 export const login = (user) => (dispatch) => ApiUtil.login(user)
-  .then((responseUser) => dispatch(receiveCurrentUser(responseUser)));
+  .then((responseUser) => dispatch(receiveCurrentUser(responseUser)))
+  .fail((errors) => dispatch(receiveErrors(errors.responseJSON)));
 
 export const logout = () => (dispatch) => ApiUtil.logout()
-  .then(() => dispatch(logoutCurrentUser()));
+  .then(() => dispatch(logoutCurrentUser()))
+  .fail((errors) => dispatch(receiveErrors(errors.responseJSON)));
