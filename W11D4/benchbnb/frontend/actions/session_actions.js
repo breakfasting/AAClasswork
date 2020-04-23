@@ -20,11 +20,11 @@ export const receiveErrors = (errors) => ({
 });
 
 export const signup = (user) => (dispatch) => ApiUtil.signup(user)
-  .then((responseUser) => dispatch(receiveCurrentUser(responseUser)))
-  .fail((res) => {
-    // debugger;
-    dispatch(receiveErrors(res.responseJSON));
-  });
+  .then((responseUser) => dispatch(receiveCurrentUser(responseUser)),
+    (res) => {
+      // debugger;
+      dispatch(receiveErrors(res.responseJSON));
+    });
 
 export const login = (user) => (dispatch) => ApiUtil.login(user)
   .then((responseUser) => dispatch(receiveCurrentUser(responseUser)))
